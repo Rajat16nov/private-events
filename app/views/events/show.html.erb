@@ -1,0 +1,10 @@
+<h3>Attendees:</h3>
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee.email %></li> <!-- or any other attribute you wish to display -->
+  <% end %>
+</ul>
+
+<% unless current_user.nil? %>
+  <%= button_to 'Attend Event', attendances_path(event_id: @event.id), method: :post %>
+<% end %>

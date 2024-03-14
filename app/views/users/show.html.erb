@@ -7,3 +7,17 @@
     <li><%= event.title %> on <%= event.date.strftime("%B %d, %Y") %></li>
   <% end %>
 </ul>
+
+<h3>Upcoming Events:</h3>
+<ul>
+  <% @user.attended_events.where('date > ?', Time.now).each do |event| %>
+    <li><%= event.title %> - <%= event.date %></li>
+  <% end %>
+</ul>
+
+<h3>Past Events:</h3>
+<ul>
+  <% @user.attended_events.where('date <= ?', Time.now).each do |event| %>
+    <li><%= event.title %> - <%= event.date %></li>
+  <% end %>
+</ul>

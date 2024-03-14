@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get 'users/:id', to: 'users#show', as: 'user'
   resources :events
+  resources :attendances, only: [:create]
+
 
 
 
